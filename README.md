@@ -5,7 +5,7 @@ These projects reflect my journey from undergraduate research to real-world prof
 
 ---
 
-## 🎓 Undergraduate Projects
+### 🎓 [Undergraduate Projects](./Undergraduate-Projects)
 
 ### [NuSkill – Capstone Project](./Undergraduate-Projects/NuSkill-Capstone)
 - Built an interactive programming tutorial platform with a blockchain-based accountability model.  
