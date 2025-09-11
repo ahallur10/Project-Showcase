@@ -1,0 +1,6 @@
+install.packages(c("DBI", "dplyr","dbplyr","odbc"))
+library(DBI)
+library(dplyr)
+library(dbplyr)
+library(odbc)
+myconn <- DBI::dbConnect(odbc::odbc(), "test", uid="ista498team", pwd='Yv2x5A7C9FcHeKhP')
