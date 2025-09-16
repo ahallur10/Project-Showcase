@@ -29,7 +29,8 @@ A short **Suggested Improvements** section documents what I’d fix in a future 
 > and `spectral_centroid` is approximated via mean FFT magnitude.  
 > See **Suggested Improvements** for how I’d fix this.
 
-![Project Workflow](<img width="444" height="372" alt="image" src="https://github.com/user-attachments/assets/40bf4f7d-ed26-40b7-9892-3e3f387db3a9" />)
+![Project Workflow](<img width="888" height="572" alt="image" src="https://github.com/user-attachments/assets/4edb9d8b-7f5a-4586-984a-84e5483a1d0d" />
+)
 
 
 ---
