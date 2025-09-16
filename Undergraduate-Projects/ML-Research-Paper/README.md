@@ -128,7 +128,7 @@ to compare RFE vs Boruta feature rankings.
 - Advanced models: I stayed with classical ML but I’d explore CNNs/RNNs on spectrograms for stronger results.
 
 ## Docs
-- [Research Paper](./Undergraduate-Projects/ML-Research-Paper/Research_Paper_Anshul.pdf)  
+- [Research Paper](docs/Machine%20Learning%20Presentation.pptx)  
 - [Presentation Slides](./Undergraduate-Projects/ML-Research-Paper/Machine%20Learning%20Presentation.pptx)
 
 
