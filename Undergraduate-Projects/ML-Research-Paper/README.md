@@ -29,6 +29,9 @@ A short **Suggested Improvements** section documents what I’d fix in a future 
 > and `spectral_centroid` is approximated via mean FFT magnitude.  
 > See **Suggested Improvements** for how I’d fix this.
 
+![Project Workflow](<img width="444" height="372" alt="image" src="https://github.com/user-attachments/assets/40bf4f7d-ed26-40b7-9892-3e3f387db3a9" />)
+
+
 ---
 ## Models
 - **Logistic Regression** (multinomial)  
@@ -87,18 +90,40 @@ to compare RFE vs Boruta feature rankings.
 
 ## Results (snapshot)
 
-| Model               | Features                  | Accuracy | Macro F1 |
-|----------------------|---------------------------|---------:|---------:|
-| Logistic Regression  | tempo + spectral_centroid | ~<fill>  | ~<fill>  |
-| Random Forest        | tempo + spectral_centroid | ~<fill>  | ~<fill>  |
-| kNN                  | tempo + spectral_centroid | ~<fill>  | ~<fill>  |
-| Random Forest        | mean(MFCC) + mean(Chroma) | ~<fill>  | ~<fill>  |
-| kNN                  | mean(MFCC) + mean(Chroma) | ~<fill>  | ~<fill>  |
+| Model               | Features                  | Accuracy |
+|----------------------|---------------------------|---------:|
+| Logistic Regression  | tempo + spectral_centroid |   29%    |
+| Random Forest        | tempo + spectral_centroid |   28%    |
+| kNN                  | tempo + spectral_centroid |   26%    |
+| Logistic Regression  | mean(MFCC) + mean(Chroma) |   33%    |
+| Random Forest        | mean(MFCC) + mean(Chroma) |   35%    |
+| kNN                  | mean(MFCC) + mean(Chroma) |   58%    |
 
 **Takeaways:**
-- MFCC + Chroma improved baseline performance across models.  
-- “Tempo” (as implemented) had limited utility; spectral info mattered more.  
-- RFE and Boruta highlighted MFCC/Chroma as most informative.
+- MFCC + Chroma substantially improved model performance.  
+- kNN benefited most, rising from ~26% to ~58%.  
+- Boruta highlighted **mean_chroma, mean_mfcc, spectral_centroid** as important; tempo was deemed unimportant.  
+- RFE favored tempo + spectral centroid, showing how feature selection methods can disagree.
+- These results are consistent with prior research, which has also found MFCC and Chroma features to be strong predictors of musical genre.
+
+![Feature Rankings: RFE vs Boruta](<img width="459" height="414" alt="image" src="https://github.com/user-attachments/assets/243232eb-22c6-4478-9c5f-591f1ee47f2e" />)
+
+---
+
+## Limitations and Future Improvements
+- Re-calculate tempo accurately: I treated sample rate as “tempo” but next time I’d use a true BPM tracker like `librosa.beat.beat_track` or `seewave::tempo()`.
+- Spectral centroid error: I used the average FFT magnitude but in the future I’d switch to `seewave::specprop`.  
+- Exploded rows vs. widened columns: my `combined_features` expanded rows instead of widening columns. Next time I’d fix this with `tidyr::unnest_wider()`.  
+- Limited features: I only used a few descriptors but I’d add more like zero-crossing rate and spectral rolloff.  
+- No hyperparameter tuning: Instead of defaults, I would try tuning kNN neighbors and RF depth which could improve results.  
+- Evaluation method: I used a single split but next time I’d apply stratified k-fold cross-validation.  
+- Dataset issues: I didn’t handle GTZAN’s duplicates/noise, in the future I’d clean it up more.  
+- Advanced models: I stayed with classical ML but I’d explore CNNs/RNNs on spectrograms for stronger results.
+
+
+
+
+
 
 
 
