@@ -1,4 +1,4 @@
-# Music Genre Classification (GTZAN) — ML Capstone Project
+# Music Genre Classification (GTZAN) — Course Project
 
 *Classical ML baseline with feature selection. Original course submission (kept intact)*
 
@@ -41,6 +41,8 @@ A short **Suggested Improvements** section documents what I’d fix in a future 
 - **k-Nearest Neighbors** (kNN)  
 
 ### Example: Logistic Regression (original)
+A simple baseline using tempo and spectral centroid features.
+
 ```r
 library(caret)
 library(nnet)
@@ -57,6 +59,8 @@ cat("Accuracy:", acc, "\n")
 ```
 
 ### Example: MFCC + Chroma (summary features)
+Improved modeling using averaged MFCC and Chroma features.
+
 ```r
 # After computing MFCC/Chroma vectors per file:
 feature_data_summary <- feature_data %>%
@@ -82,7 +86,7 @@ mean(predRF == te$genre)
 
 ## Evaluation
 - **Splits:** Train/test **70/30** (and **80/20** for MFCC/Chroma).  
-- **Metrics:** Accuracy, per-class **F1**, Confusion Matrix.  
+- **Metrics:** Accuracy, Confusion Matrix.  
 - **Feature Selection:** RFE (RF estimator) and **Boruta**.  
 
 Use `caret::confusionMatrix` for confusion matrices and the included plotting code  
@@ -122,6 +126,11 @@ to compare RFE vs Boruta feature rankings.
 - Evaluation method: I used a single split but next time I’d apply stratified k-fold cross-validation.  
 - Dataset issues: I didn’t handle GTZAN’s duplicates/noise, in the future I’d clean it up more.  
 - Advanced models: I stayed with classical ML but I’d explore CNNs/RNNs on spectrograms for stronger results.
+
+## Docs
+- [Research Paper](docs/Research_Paper.pdf)  
+- [Presentation Slides](docs/Presentation.pdf)
+
 
 
 
