@@ -1,27 +1,28 @@
-# Music Genre Classification (GTZAN) — Course Project
+# Music Genre Classification (GTZAN) — ML Capstone Project
 
-*Classical ML baseline with feature selection. Original course submission (kept intact) + notes on suggested improvements.*
+*Classical ML baseline with feature selection. Original course submission (kept intact)*
 
-**Tech:** R • GTZAN • MFCC • Chroma • Logistic Regression • Random Forest • kNN
+
 ---
 
 ## Overview
-This project explores music genre classification on the GTZAN dataset using classical machine-learning models.  
+In this grad level ML class, our capstone project was to use a novel method to solve a problem using the ML practices we learnt throughtout the course. My project explores music genre classification on the GTZAN dataset using classical machine-learning models.  
 The focus is on feature engineering (MFCC & Chroma), simple baselines (Logistic Regression, Random Forest, kNN),  
-and feature selection (RFE, Boruta).
+and feature selection (RFE, Boruta) to help better solve the problem of classifying music genres.
 
-**Status:** The repo preserves the **original course code** (graded at 94%).  
+> **Status:**
+> The repo preserves the original course code (graded at 94%).  
 A short **Suggested Improvements** section documents what I’d fix in a future pass.
+
 ---
 
 ## Dataset
-- **GTZAN:** 10 genres, ~100 clips/genre (30-sec WAV files).  
-- **Access:** Not included in this repo. Download separately and update `data_path` in the script(s).  
-- **Use:** Research/education only. Please respect the dataset license.
+- **GTZAN:** 10 genres (30-sec WAV files).    
+- **Summary:** The GTZAN dataset is a popular benchmark for music genre classification, containing 1,000 audio tracks (30 seconds each) across 10 genres. It’s widely available online, including versions hosted on Kaggle.
 ---
 
 ## Features
-- **Basic:** `tempo` and `spectral_centroid` as implemented in the original code.  
+- **Basic:** `tempo` and `spectral_centroid`  
 - **Engineered:** MFCC (13 coefficients) and Chroma (12 bins), summarized as **means per track**.  
 - **Selection:** Recursive Feature Elimination (RFE) and Boruta for feature importance.  
 
@@ -29,8 +30,8 @@ A short **Suggested Improvements** section documents what I’d fix in a future 
 > and `spectral_centroid` is approximated via mean FFT magnitude.  
 > See **Suggested Improvements** for how I’d fix this.
 
-![Project Workflow](<img width="888" height="572" alt="image" src="https://github.com/user-attachments/assets/4edb9d8b-7f5a-4586-984a-84e5483a1d0d" />
-)
+<p> <img width="888" height="572" alt="image" src="https://github.com/user-attachments/assets/f976a05b-bd6b-4d10-a98c-6a9bbeeef824" />
+ </p>
 
 
 ---
@@ -107,7 +108,8 @@ to compare RFE vs Boruta feature rankings.
 - RFE favored tempo + spectral centroid, showing how feature selection methods can disagree.
 - These results are consistent with prior research, which has also found MFCC and Chroma features to be strong predictors of musical genre.
 
-![Feature Rankings: RFE vs Boruta](<img width="459" height="414" alt="image" src="https://github.com/user-attachments/assets/243232eb-22c6-4478-9c5f-591f1ee47f2e" />)
+<p> <img width="918" height="828" alt="image" src="https://github.com/user-attachments/assets/5dcf74ff-f8fd-483c-b1e2-0816928c4bed" />
+ </p>
 
 ---
 
