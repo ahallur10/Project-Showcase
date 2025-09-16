@@ -12,7 +12,7 @@ These projects reflect my journey from undergraduate research to real-world prof
 - Full-stack design with **Flask (Python), React.js, Snowflake SQL, Google Cloud Run, and Coinbase API**.  
 - Delivered secure authentication, payment processing, and balance tracking.  
 
-### [Music Genre Classification – ML Research](./Undergraduate-Projects/Music-Genre-ML)
+### [Music Genre Classification – ML Research](./Undergraduate-Projects/ML-Research-Paper)
 - Applied **RFE and Boruta feature selection** on the GTZAN dataset.  
 - Improved kNN classification accuracy to **57.7% (vs. 29% baseline)** by incorporating advanced audio features.  
 - Validated improvements using logistic regression, random forest, and kNN models.  
