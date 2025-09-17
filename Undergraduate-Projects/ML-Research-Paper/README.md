@@ -6,7 +6,7 @@
 ---
 
 ## Overview
-In this grad level ML class, our capstone project was to use a novel method to solve a problem using the ML practices we learnt throughtout the course. My project explores music genre classification on the GTZAN dataset using classical machine-learning models.  
+In this grad level ML class, my capstone project was to use a novel method to solve a problem using the ML practices we learnt throughtout the course. My project explores music genre classification on the GTZAN dataset using classical machine-learning models.  
 The focus is on feature engineering (MFCC & Chroma), simple baselines (Logistic Regression, Random Forest, kNN),  
 and feature selection (RFE, Boruta) to help better solve the problem of classifying music genres.
 
