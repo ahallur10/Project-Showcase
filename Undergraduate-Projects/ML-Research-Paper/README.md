@@ -103,8 +103,8 @@ mean(predRF == te$genre)
 
 **Takeaways:**
 - MFCC + Chroma substantially improved model performance.  
-- kNN benefited most, rising from ~26% to ~58%.  
-- Boruta highlighted **mean_chroma, mean_mfcc, spectral_centroid** as important; tempo was deemed unimportant.  
+- kNN benefited most, rising from 26% to 58%.  
+- Boruta highlighted **mean_chroma, mean_mfcc, spectral_centroid** as important while tempo was deemed unimportant.  
 - RFE favored tempo + spectral centroid, showing how feature selection methods can disagree.
 - These results are consistent with prior research, which has also found MFCC and Chroma features to be strong predictors of musical genre.
 
