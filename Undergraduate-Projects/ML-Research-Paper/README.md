@@ -88,10 +88,6 @@ mean(predRF == te$genre)
 - **Splits:** Train/test **70/30** (and **80/20** for MFCC/Chroma).  
 - **Metrics:** Accuracy, Confusion Matrix.  
 - **Feature Selection:** RFE (RF estimator) and **Boruta**.  
-
-Use `caret::confusionMatrix` for confusion matrices and the included plotting code  
-to compare RFE vs Boruta feature rankings.
-
 ---
 
 ## Results (snapshot)
