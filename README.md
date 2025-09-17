@@ -1,13 +1,13 @@
 # 👨🏻‍💻 Project Showcase
 
-Welcome! This is a curated portfolio of academic and professional projects in **data science, machine learning, and analytics**.  
+Welcome! This is a curated portfolio of academic and professional projects in **data science, machine learning, and analytics**.
 Click into individual projects for detailed READMEs with workflows and results.
 
 ---
 
 ## Undergraduate Projects
 
-### [NuSkill – Capstone Project](./Undergraduate-Projects/NuSkill-Capstone/)
+### [NuSkill – Capstone Project](./Undergraduate-Projects/ISTA498-Project)
 - Interactive programming tutorial platform with a blockchain-based accountability model.  
 - Full-stack design using **Flask (Python)**, **React.js**, and **Snowflake SQL**.  
 
