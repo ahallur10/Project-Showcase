@@ -7,7 +7,7 @@ These projects reflect my journey from undergraduate research to real-world prof
 
 ## Undergraduate Projects
 
-### [NuSkill – Capstone Project](./Undergraduate-Projects/NuSkill-Capstone)
+### [NuSkill – Capstone Project](./Undergraduate-Projects/ISTA498-Project)
 - Built an interactive programming tutorial platform with a blockchain-based accountability model.  
 - Full-stack design with **Flask (Python), React.js, Snowflake SQL, Google Cloud Run, and Coinbase API**.  
 - Delivered secure authentication, payment processing, and balance tracking.  
