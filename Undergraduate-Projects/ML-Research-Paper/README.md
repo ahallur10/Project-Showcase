@@ -125,8 +125,7 @@ mean(predRF == te$genre)
 
 ## Docs
 - [Research Paper](Research_Paper_Anshul.pdf)
-- [Presentation Slides](Machine Learning Presentation.pdf)
-
+- [Presentation Slides](Presentation.pdf)
 
 
 
