@@ -14,6 +14,9 @@ and feature selection (RFE, Boruta) to help better solve the problem of classify
 > The repo preserves the original course code (graded at 94%).  
 A short **Suggested Improvements** section documents what I’d fix in a future pass.
 
+## Code
+- [Original Submission (R script)](Original_Code.r)
+
 ---
 
 ## Dataset
