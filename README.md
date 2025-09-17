@@ -1,11 +1,11 @@
-# 📊 Project Showcases
+# Project Showcases
 
 Welcome! This repository highlights my academic and professional projects in **data science, machine learning, and data analytics**.  
 These projects reflect my journey from undergraduate research to real-world professional impact at Maricopa County.  
 
 ---
 
-### 🎓 [Undergraduate Projects](./Undergraduate-Projects)
+## Undergraduate Projects
 
 ### [NuSkill – Capstone Project](./Undergraduate-Projects/NuSkill-Capstone)
 - Built an interactive programming tutorial platform with a blockchain-based accountability model.  
@@ -19,7 +19,7 @@ These projects reflect my journey from undergraduate research to real-world prof
 
 ---
 
-## 💼 Professional Projects – Maricopa County
+## Professional Projects – Maricopa County
 
 ### [Program Information Dashboard](./Professional-Projects/Program-Info-Dashboard)
 - Recognized by the **National Association of Counties** for automating data checks across 600+ metrics.  
@@ -38,11 +38,10 @@ These projects reflect my journey from undergraduate research to real-world prof
 
 ---
 
-## 🔍 Skills Highlighted
+## Skills Highlighted
 - **Machine Learning**: Feature engineering, neural networks, model validation, research methods.  
-- **Data Engineering & Analytics**: Power BI, SQL, DAX, data modeling, dashboard automation.  
-- **Software Engineering**: Full-stack development, APIs, cloud deployment, blockchain integration.  
+- **Data Analytics**: Power BI, SQL, DAX, data modeling.  
+- **Software Engineering**: Full-stack development, APIs, cloud deployment.  
 
 ---
 
-📬 Feel free to explore individual project folders for more details.
