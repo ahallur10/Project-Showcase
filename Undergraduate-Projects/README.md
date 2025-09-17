@@ -29,6 +29,5 @@ For example:
 
 <h2>Purpose</h2>
 <p>
-These projects reflect the breadth of my undergraduate work — from academic research to applied software engineering. 
-They serve as part of my portfolio to demonstrate my readiness for graduate-level study and research in data science and information science.
+These projects reflect the strongest projects of my undergraduate work and they serve as part of my portfolio to demonstrate my readiness for graduate-level study and research in data science and information science.
 </p>
