@@ -20,7 +20,7 @@ Click into individual projects for detailed READMEs with workflows and results.
 ## Professional Projects – Maricopa County
 
 ### [Health Monitoring Dashboard](./Professional-Projects/Program-Info-Dashboard/)
-- Recognized by **NACo** for automating 600+ metric checks.  
+- Reverse-engineered ChildPlus health event logic for program compliance tracking of over 45 health events.  
 - Built with **Power BI, M Query, DAX**.  
 
 ### [At-Risk Prediction Model (ML)](./Professional-Projects/At-Risk-Prediction-Model/)
