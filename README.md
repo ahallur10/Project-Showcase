@@ -19,7 +19,7 @@ Click into individual projects for detailed READMEs with workflows and results.
 
 ## Professional Projects – Maricopa County
 
-### [Program Information Dashboard](./Professional-Projects/Program-Info-Dashboard/)
+### [Health Monitoring Dashboard](./Professional-Projects/Program-Info-Dashboard/)
 - Recognized by **NACo** for automating 600+ metric checks.  
 - Built with **Power BI, M Query, DAX**.  
 
