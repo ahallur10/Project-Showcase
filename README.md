@@ -1,6 +1,6 @@
 # 👨🏻‍💻 Project Showcase
 
-Welcome! This is a curated portfolio of academic and professional projects in **data science, machine learning, and analytics**.
+Welcome! This is a curated portfolio of academic and professional projects in **data science, machine learning, and analytics**.Each project below highlights a different dimension of my work, from applied analytics in public service to machine learning research and product design.
 Click into individual projects for detailed READMEs with workflows and results.
 
 ---
