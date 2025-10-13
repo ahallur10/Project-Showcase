@@ -37,7 +37,7 @@ It showcases:
 ---
 
 ## 🧩 Workflow Diagram
-<img width="1024" height="1700" alt="image" src="https://github.com/user-attachments/assets/68366dea-29b1-4e03-bb84-3bb112d0228b" />
+<img width="549" height="676" alt="Updated ML Flowchart" src="https://github.com/user-attachments/assets/cf4dfbc5-ed5f-4c3c-81c8-c3b39cdcae6d" />
 
 ---
 ## 🧰 Tech Stack
