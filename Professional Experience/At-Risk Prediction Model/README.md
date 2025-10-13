@@ -28,6 +28,9 @@ The project showcases:
 > This project is for **demonstration and portfolio purposes only.**  
 > The scripts are illustrative and will not run without private datasets.
 
+## Methodology
+
+A crucial part of this project was ensuring a high quality dataframe to begin with. At the time, we had to rely on generated reports through our database rather than query out the data since we did not have access. By doing so, our cleaning process took much longer than expected as we had to clean out PDF style reports on Excel. As the domain knowledge expert on the database, I was comfortable with transforming data reports into a clean table format to get it prepped for data modeling in PowerBI, so I provided guidance on what reports to use and which reports held the datapoints that were applicable for this project. This cleaning and transforming step included re-structuring the data from the reports on two separate databases, with many reports having a different format and structure which meant each report type needed it's own process of cleaning and transforming the data into clean tables. Once we had the cleaned datasets, we consolidated all the datasets by using the child's ID as a primary key and transformed the datasets into one big dataframe. We applied binary options where needed and converted certain values to text or the raw number, depending on the column and if it made sense to do so. We then 
 ---
 
 ## Key Scripts
@@ -49,7 +52,7 @@ The project showcases:
 ---
 ## PowerBI Dashboard
 > ⚠️ **Note:**  
-> The student ID's have been renamed and site information has been blurred out fo **demonstration and portfolio purposes only.**
+> The student ID's have been renamed and site information has been blurred out for **demonstration and portfolio purposes only.**
 <img width="705" height="416" alt="Cleaned ML Project Screenshot" src="https://github.com/user-attachments/assets/45a1fa09-402f-4614-98eb-2a20e878b2c3" />
 
 
