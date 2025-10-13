@@ -1,7 +1,7 @@
-# 🧠 At-Risk Student Prediction (Illustrative Machine Learning Project)
+# At-Risk Student Prediction Model
 
 ## 📋 Overview
-This repository demonstrates a full **machine learning workflow** for predicting whether a student (or record) is **“on-track”** or **“at-risk.”**
+This repository is the Phase 1 implementation ofdemonstrates a full **machine learning workflow** for predicting whether a student (or record) is **“on-track”** or **“at-risk.”**
 
 It showcases:
 - **Data preprocessing**  
@@ -13,17 +13,11 @@ It showcases:
 > The scripts are illustrative and will not run without private datasets.
 
 ---
-
-## 🧩 Workflow Diagram
-
-![Workflow Diagram]
-
 **Pipeline Overview:**
 1. 📂 **Data** – Collected tabular datasets (e.g., attendance, demographics, program data).  
 2. 🧹 **Preprocessing** – Cleaned, normalized, and encoded features.  
 3. ✂️ **K-Fold Cross Validation** – Ensured balanced and fair model evaluation.  
-4. 🌳 **Model Training** – Trained Decision Trees / Random Forests or  
-   🧠 Neural Networks with early stopping (PyTorch).  
+4. 🌳 **Model Training** – Trained Decision Trees / Random Forests or Neural Networks with early stopping (PyTorch).  
 5. 📊 **Evaluation** – Produced accuracy metrics, confusion matrices, and reports.  
 6. 📝 **Reporting** – Illustrated how results could be displayed in dashboards.
 
@@ -42,6 +36,10 @@ It showcases:
 
 ---
 
+## 🧩 Workflow Diagram
+<img width="1024" height="1700" alt="image" src="https://github.com/user-attachments/assets/68366dea-29b1-4e03-bb84-3bb112d0228b" />
+
+---
 ## 🧰 Tech Stack
 
 - **Language:** Python  
