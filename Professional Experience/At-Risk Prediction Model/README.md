@@ -1,11 +1,27 @@
-# 🧠 At-Risk Student Prediction (Illustrative Machine Learning Project)
+# At-Risk Student Prediction Model
 
-## 📋 Overview
-This repository demonstrates a full **machine learning workflow** for predicting whether a student (or record) is **“on-track”** or **“at-risk.”**
+## Overview
+I designed this project to explore how machine learning can be applied to support early intervention for students who may be at risk of not meeting developmental goals. Developed as the capstone project for our data management intern, it was completed in collaboration with our programmer analyst. I led the design of the project specifications, timeline, data sources, and data-cleaning methodology, ensuring the intern was involved in each stage of development. The resulting Phase 1 implementation demonstrates a complete machine learning workflow for predicting whether a student record is “on track” or “at risk” for meeting learning outcomes for children ages 0–5. Model results were visualized in Power BI to translate predictions into actionable insights for educators and program staff. My aim was to implement this project by breaking it into 3 different phases:
 
-It showcases:
+**Phase 1 — Exploratory Development:**
+Focused on building the initial machine learning prototype and verifying the feasibility of the approach.
+This phase emphasized data exploration, identifying inconsistencies, and shaking out bugs in preprocessing and model training workflows.
+
+**Phase 2 — Refinement and Enhancement:**
+A more polished and optimized version of the workflow.
+Improvements included refined feature engineering, better handling of missing data, and structural corrections based on insights from Phase 1.
+
+**Phase 3 — Field Implementation and Evaluation:**
+The finalized model will be deployed at a selected site to evaluate how teachers and staff interact with predictions in real-world settings.
+This phase assesses the model’s usability, accuracy, and impact on early intervention decision-making.
+
+## Problem Addressed
+Early intervention programs often rely on static reporting or small-scale A/B testing to identify children who may need additional support. These methods can miss subtle patterns or combined risk factors across attendance, health, and family variables. This project explores how machine learning can improve early identification by capturing complex, nonlinear relationships among multiple indicators, enabling more proactive and data-informed support for children and families.
+
+
+The project showcases:
 - **Data preprocessing**  
-- **Model training** (Decision Tree, Random Forest, or Neural Network)  
+- **Model training** (Decision Tree or Neural Network)  
 - **Evaluation and visualization** of model performance  
 
 > ⚠️ **Note:**  
@@ -14,22 +30,7 @@ It showcases:
 
 ---
 
-## 🧩 Workflow Diagram
-
-![Workflow Diagram]
-
-**Pipeline Overview:**
-1. 📂 **Data** – Collected tabular datasets (e.g., attendance, demographics, program data).  
-2. 🧹 **Preprocessing** – Cleaned, normalized, and encoded features.  
-3. ✂️ **K-Fold Cross Validation** – Ensured balanced and fair model evaluation.  
-4. 🌳 **Model Training** – Trained Decision Trees / Random Forests or  
-   🧠 Neural Networks with early stopping (PyTorch).  
-5. 📊 **Evaluation** – Produced accuracy metrics, confusion matrices, and reports.  
-6. 📝 **Reporting** – Illustrated how results could be displayed in dashboards.
-
----
-
-## ⚙️ Key Scripts
+## Key Scripts
 
 | File | Description |
 |------|--------------|
@@ -42,9 +43,32 @@ It showcases:
 
 ---
 
-## 🧰 Tech Stack
+## Workflow Diagram
+<img width="549" height="676" alt="Updated ML Flowchart" src="https://github.com/user-attachments/assets/cf4dfbc5-ed5f-4c3c-81c8-c3b39cdcae6d" />
+
+---
+## PowerBI Dashboard
+> ⚠️ **Note:**  
+> The student ID's have been renamed and site information has been blurred out fo **demonstration and portfolio purposes only.**
+<img width="705" height="416" alt="Cleaned ML Project Screenshot" src="https://github.com/user-attachments/assets/45a1fa09-402f-4614-98eb-2a20e878b2c3" />
+
+
+---
+## Pipeline Overview
+1. **Data** – Created tabular datasets (e.g. attendance, demographics, program data) by cleaning and transforming generated reports on Excel.  
+2. **Preprocessing** – Cleaned, normalized, and encoded features.  
+3. **K-Fold Cross Validation** – Ensured balanced and fair model evaluation.  
+4. **Model Training** – Trained Decision Trees / Random Forests or Neural Networks with early stopping (PyTorch).  
+5. **Evaluation** – Produced accuracy metrics, confusion matrices and evaluated F1 scores.  
+6. **Reporting** – Illustrated how results could be displayed in dashboards.
+
+---
+
+## Tech Stack
 
 - **Language:** Python  
 - **Core Libraries:** `pandas`, `numpy`, `scikit-learn`, `imblearn`, `matplotlib`  
 - **Deep Learning:** `PyTorch`  
 - **Utilities:** `joblib`, `openpyxl`, `tkinter`
+
+---
