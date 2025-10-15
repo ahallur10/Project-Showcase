@@ -96,12 +96,12 @@ These enhancements aim to improve both the usability and impact of the model, se
 
 | File | Description |
 |------|--------------|
-| `construct_df (public).py` | Builds and cleans a structured dataframe from tabular data sources (CSV/Excel). Handles missing values, normalization, and one-hot encoding. |
-| `Decision_Tree (public).py` | Contains `TreeLabelGenerator`, which trains either a Decision Tree or Random Forest classifier using scikit-learn. Includes model persistence options. |
-| `Neural Net (public).py` | Implements `NNTrainer`, a compact PyTorch-based MLP with BatchNorm, Dropout, and early stopping for binary classification tasks. |
-| `accuracy (public).py` | Evaluates model performance using accuracy, confusion matrix, and classification reports. Aggregates K-fold results with optional ID hashing and export. |
+| `construct_df (public).py` | Builds and cleans a structured dataframe from our cleaned Excel Dataframe. Handles missing values, normalization, and one-hot encoding. |
+| `Decision_Tree (public).py` | Trains a Random Forest classifier using scikit-learn. Includes model persistence options. |
+| `Neural Net (public).py` | Implements `NNTrainer`, a PyTorch-based MLP with BatchNorm, Dropout, and early stopping for binary classification tasks. |
+| `accuracy (public).py` | Evaluates model performance using accuracy, confusion matrix, and classification reports. Aggregates K-fold results. |
 | `Dialog_box (public).py` | Provides a simple Tkinter GUI allowing manual model selection (“Decision Tree” or “Neural Network”). Used for interactive demonstration. |
-| `main_pipeline (public).py` | Orchestrates the full pipeline: preprocessing, model training (Decision Tree / Random Forest / Neural Net), K-fold validation, and evaluation reporting. |
+| `main_pipeline (public).py` | Orchestrates the full pipeline: preprocessing, model training (Decision Tree / Random Forest and Neural Net), K-fold validation, and evaluation reporting. |
 
 
 > ⚠️ **Note:**  
