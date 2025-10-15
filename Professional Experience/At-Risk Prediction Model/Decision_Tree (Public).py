@@ -1,81 +1,39 @@
-"""
-Tree-based model training (illustrative).
-
-What it shows:
-- Fit a simple tree-based classifier (Decision Tree or Random Forest)
-- Return predictions alongside the true labels for downstream evaluation
-- Optional: serialize the trained model
-
-NOTE: This script is for demonstration only and won’t run without private datasets.
-"""
-
-from __future__ import annotations
-from typing import Literal, Optional, Tuple
 import joblib
-import numpy as np
-import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
+from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier
+import matplotlib.pyplot as plt
 
-ClassifierName = Literal["decision_tree", "random_forest"]
 
-class TreeLabelGenerator:
-    def __init__(
-        self,
-        X_train: pd.DataFrame | np.ndarray,
-        y_train: pd.Series | np.ndarray,
-        X_test:  pd.DataFrame | np.ndarray,
-        y_test:  pd.Series | np.ndarray,
-        *,
-        model: ClassifierName = "decision_tree",
-        random_state: Optional[int] = 42,
-        max_depth: Optional[int] = None,
-        n_estimators: int = 200,
-    ):
-        self.X_train, self.y_train = X_train, y_train
-        self.X_test,  self.y_test  = X_test,  y_test
-        self.model_name = model
-        self.random_state = random_state
-        self.max_depth = max_depth
-        self.n_estimators = n_estimators
-        self.clf = None
+class DecisionTreeLabelGenerator:
 
-    def _build_model(self):
-        if self.model_name == "random_forest":
-            return RandomForestClassifier(
-                n_estimators=self.n_estimators,
-                max_depth=self.max_depth,
-                random_state=self.random_state,
-                n_jobs=-1,
-            )
-        return DecisionTreeClassifier(
-            max_depth=self.max_depth,
-            random_state=self.random_state,
-        )
+    def __init__(self, train_x, train_y, test_x, test_y):
+        self.Train_X = train_x
+        self.Train_y = train_y
+        self.Test_X = test_x
+        self.Test_y = test_y
+        self.model = None
 
-    def train(self) -> None:
-        self.clf = self._build_model()
-        self.clf.fit(self.X_train, self.y_train)
+    # Main function for the class
+    # It will train the decision tree, plot it (optional), and return the generated and actual labels
+    def run(self):
+        self.train_model()
+        # tree.plot_tree(self.model)
+        # plt.show()
+        return self.generate_labels()
 
-    def predict_vs_true(self) -> Tuple[np.ndarray, np.ndarray]:
-        if self.clf is None:
-            raise RuntimeError("Model not trained. Call train() first.")
-        y_pred = self.clf.predict(self.X_test)
-        return y_pred, np.asarray(self.y_test)
+    def train_model(self):
+        self.model = tree.DecisionTreeClassifier()
+        # self.model = RandomForestClassifier()
+        self.model.fit(self.Train_X, self.Train_y)
 
-    def run(self) -> Tuple[np.ndarray, np.ndarray]:
-        """Convenience: train then return (y_pred, y_true)."""
-        self.train()
-        return self.predict_vs_true()
+    # Return two lists (generated vs actual)
+    def generate_labels(self):
+        if self.model is None:
+            raise ValueError("Model not trained. Please call train_model() first.")
 
-    def save(self, path: str) -> None:
-        """Optional: persist the model artifact for reproducibility."""
-        if self.clf is None:
-            raise RuntimeError("Model not trained. Call train() first.")
-        joblib.dump(self.clf, path)
-        print(f"Model saved to {path}")
+        generated_labels = self.model.predict(self.Test_X)
+        return generated_labels, self.Test_y
 
-# Example (non-running) usage:
-# gen = TreeLabelGenerator(X_train, y_train, X_test, y_test, model="random_forest", max_depth=8)
-# y_pred, y_true = gen.run()
-# gen.save("model.joblib")
+    def save_model(self, file_path):
+        joblib.dump(self.model, file_path)
+        print(f"Decision Tree model saved to {file_path}")
