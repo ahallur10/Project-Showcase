@@ -86,7 +86,7 @@ Future iterations of this project will focus on strengthening both the data foun
 
 . **Address underlying issues** such as imbalanced labels, accuracy of labeling and feature quality
 
-. **Balance the dataset** by using SMOTE or class weights to improve recall for the NN
+. **Balance the dataset** by continuing to use SMOTE or class weights to improve recall for the NN
 
 These enhancements aim to improve both the usability and impact of the model, setting the stage for broader implementation across additional program years or counties.
 
