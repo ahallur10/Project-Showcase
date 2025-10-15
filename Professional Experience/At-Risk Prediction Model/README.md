@@ -20,7 +20,7 @@ Early intervention programs often rely on static reporting or small-scale A/B te
 
 ## Methodology
 
-A crucial first step in this project was ensuring the creation of a high-quality, analysis-ready dataframe. Since we did not have direct database access at the time, we relied on program-generated reports rather than SQL queries. This meant the cleaning process was manual and time-consuming that included ransforming PDF-style reports into structured Excel tables.
+A crucial first step in this project was ensuring the creation of a high-quality, analysis-ready dataframe. Since we did not have direct database access at the time, we relied on program-generated reports rather than SQL queries. This meant the cleaning process was manual and time-consuming that included transforming PDF-style reports into structured Excel tables.
 
 As the domain expert on the database, I guided the data sourcing process by identifying which reports contained relevant variables for modeling and how they related across systems. We consolidated data from two separate databases, each with differing formats and structures, requiring individualized cleaning workflows for each report type.
 
