@@ -1,102 +1,109 @@
-"""
-End-to-end ML workflow (illustrative).
+import sys
 
-What it shows:
-- Build features/labels from a tabular file
-- K-fold evaluation of either a tree-based model or a small neural net
-- Aggregate predictions for reporting
-
-NOTE: This script is for demonstration only and won’t run without private datasets.
-All names are generic and de-identified for public sharing.
-"""
-
-from __future__ import annotations
-import os
-import numpy as np
-import pandas as pd
 from sklearn.model_selection import StratifiedKFold
+import numpy as np
+import construct_df as cd
+import decision_tree as dtree
+import accuracy
+import neural_network as nn
+import pandas as pd
+import dialogbox as dbox
+import matplotlib.pyplot as plt
 
-# Local modules (illustrative versions from this repo)
-#   data_preprocessing.py : TabularPreprocessor
-#   model_training.py     : TreeLabelGenerator
-#   nn_trainer.py         : NNTrainer
-#   model_evaluation.py   : evaluate_runs
-#   model_selector.py     : choose_model (optional)
-from data_preprocessing import TabularPreprocessor
-from model_training import TreeLabelGenerator
-from nn_trainer import NNTrainer
-from model_evaluation import evaluate_runs
-# from model_selector import choose_model  # optional GUI
-
-def select_model(default: str = "decision_tree") -> str:
-    """
-    Simple selector to avoid launching a GUI in public repos.
-    Set MODEL_CHOICE env var to 'decision_tree' or 'neural_network'.
-    """
-    choice = os.getenv("MODEL_CHOICE", default).strip().lower()
-    if choice not in {"decision_tree", "neural_network"}:
-        choice = default
-    return choice
-
-def main():
-    # Display settings (safe for large tables when demonstrating)
-    pd.set_option("display.max_columns", None)
-    pd.set_option("display.width", 160)
-
-    # --- 1) Build features/labels (illustrative) ---
-    # Replace "dataset.xlsx" with your own de-identified filename locally; not included in this repo.
-    pre = TabularPreprocessor(
-        file_path="dataset.xlsx",        # placeholder; not shipped publicly
-        id_column="record_id",
-        label_column="target",
-        drop_columns=[],                 # put domain-specific columns here if needed
-        text_columns_to_normalize=["bmi_category"],  # generic example
-    )
-    pre.load()
-    pre.clean()
-    X, y = pre.split_xy()
-
-    # --- 2) Choose model (no GUI by default for public repos) ---
-    # model_name = choose_model(options=["Decision Tree", "Neural Network"]).lower().replace(" ", "_")
-    model_name = select_model(default="decision_tree")  # or set MODEL_CHOICE env var
-
-    # --- 3) K-fold evaluation (illustrative) ---
-    k = 5
-    skf = StratifiedKFold(n_splits=k, shuffle=True, random_state=42)
-
-    runs = []  # will hold (y_pred, y_true, record_ids) per fold
-    for fold_idx, (train_idx, test_idx) in enumerate(skf.split(X, y), start=1):
-        X_train, X_test = X.iloc[train_idx], X.iloc[test_idx]
-        y_train, y_test = y.iloc[train_idx], y.iloc[test_idx]
-
-        # Optionally: apply resampling here if class imbalance exists (left out for clarity)
-        # from imblearn.over_sampling import SMOTE
-        # X_train, y_train = SMOTE(random_state=42).fit_resample(X_train, y_train)
-
-        if model_name == "neural_network":
-            trainer = NNTrainer(
-                X_train, y_train,
-                X_test,  y_test,
-                epochs=30, patience=5, min_delta=1e-3, lr=1e-3, batch_size=64
-            )
-            y_pred, y_true = trainer.run()
-            # trainer.save("mlp_state.pt")  # optional artifact (not committed)
-        else:
-            gen = TreeLabelGenerator(
-                X_train, y_train,
-                X_test,  y_test,
-                model="decision_tree",   # or "random_forest"
-                max_depth=None,
-                random_state=42,
-            )
-            y_pred, y_true = gen.run()
-            # gen.save("model.joblib")  # optional artifact (not committed)
-
-        # Record IDs are just the test index here; evaluate_runs will hash by default.
-        runs.append((y_pred, y_true, np.arange(len(y_true))))
-
-    # --- 4) Aggregate & report (hashed identifiers by default) ---
-    _ = evaluate_runs(runs=runs, save_path=None, verbose=True)
 
 if __name__ == "__main__":
-    main()
+    # Set pandas display options
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.width', None)
+    pd.set_option('display.max_colwidth', None)
+
+    # Get clean, overall dataframe
+    # It comes in two parts (the feature set,df_X, and the label set, df_y)
+    processor = cd.DataFrameProcessor(excel_file="DataFrame", dropped_columns=None)
+    df_X, df_y = processor.process()
+    print(df_X)
+    print(df_y)
+
+    # Use a dialog box to select the model
+    user_choice = dbox.choose_model()
+    print(f"Selected Model: {user_choice}")
+
+    # Specify the amount of splits for K-Fold Cross Validation
+    # https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html
+    skf = StratifiedKFold(n_splits=5)
+    skf.get_n_splits(np.array(df_X), np.array(df_y))
+    StratifiedKFold(n_splits=5, random_state=None, shuffle=False)
+
+
+    # Run the appropriate model based on the user's selection
+    # It will create n amount of models and display the accuracy measures in a table format
+    # empty label list will store all generated and actual list pairs from all runs
+    labels = []
+    if user_choice == "Decision Tree":
+        for i, (train_index, test_index) in enumerate(skf.split(df_X, df_y)):
+            child_names = processor.child_names[test_index]
+            # Get actual data from the indices from the enumeration
+            train_x, train_y, test_x, test_y = df_X.iloc[train_index], df_y.iloc[train_index], df_X.iloc[test_index], df_y.iloc[test_index]
+            # Comment out the bottom line to remove SMOTE
+            train_x, train_y = cd.smote_over_sampling(train_x, train_y, rand=None)
+            # Run the decision tree
+            decision_tree_algo = dtree.DecisionTreeLabelGenerator(train_x, train_y,
+                                                                  test_x, test_y)
+            # Get list of labels and append to our list
+            generated_labels, actual_labels = decision_tree_algo.run()
+            labels.append([generated_labels, actual_labels, child_names])
+
+        # print out accuracy measures for k-fold approach
+        # Input is in format:
+        # [[[generated label model 1, generated model 1, ...], [actual model 1, ...]], [[generated model 2, ...], [actual model 2, ...]], ...]
+        # Will print out a table of these accuracies and the averages
+        accuracy.get_accuracy(labels)
+
+    # NN will display the error rate vs the number of epochs in a graph at the end
+    # It will plot n amount of lines on a single graph with a legend to clarify model number
+    elif user_choice == "Neural Network":
+        loss_curves = []  # list to hold the curves for each fold
+        for i, (train_index, test_index) in enumerate(skf.split(df_X, df_y)):
+            child_names = processor.child_names[test_index]
+            train_x, train_y, test_x, test_y = df_X.iloc[train_index], df_y.iloc[train_index], df_X.iloc[test_index], df_y.iloc[test_index]
+            # (optional) Comment out the bottom line to remove SMOTE
+            train_x, train_y = cd.smote_over_sampling(train_x, train_y, rand=None)
+
+            # Train the NN
+            trainer = nn.NeuralNetworkTrainer(train_x, train_y, test_x, test_y, epochs=150, early_stopping_patience=25, early_stopping_min_delta=0.00001,
+                                              lr=0.001)
+
+            # Get the labels and append to list
+            generated_labels, actual_labels = trainer.run()
+            labels.append([generated_labels, actual_labels, child_names])
+
+
+            # Append losses to be graphed
+            loss_curves.append({
+                "train_loss": trainer.train_loss_curve,
+                "val_loss": trainer.test_loss_curve
+            })
+
+
+        # Print accuracy table
+        accuracy.get_accuracy(labels)
+
+        # Plotting the loss curves for each fold
+        plt.figure(figsize=(20, 12))
+        for i, curves in enumerate(loss_curves):
+            epochs = range(1, len(curves["train_loss"]) + 1)
+            plt.plot(epochs, curves["train_loss"], label=f"Fold {i + 1} Train", linestyle=":")
+            plt.plot(epochs, curves["val_loss"], label=f"Fold {i + 1} Test")
+        plt.xlabel("Epoch")
+        plt.ylabel("Loss")
+        plt.title("Training and Validation Loss Curves Across Folds")
+        plt.legend()
+        plt.show()
+    else:
+        print("No valid algorithm selected. Exiting...")
+        sys.exit(1)
+
+    # Optionally, save the model to a file if it performs well.
+    #trainer.save_model("trained_neural_net_model.pth")
+    #decision_tree_algo.save_model("trained_decision_tree_model.joblib")
+
