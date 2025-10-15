@@ -47,7 +47,7 @@ These findings provide valuable early insight into which variables most strongly
 | Metric | Decision Tree | Neural Network | Interpretation |
 |--------|----------------|----------------|----------------|
 | **Accuracy** | 0.78 | 0.86 | NN improves overall accuracy |
-| **Precision (Below / Class 0)** | 0.18 | 0.40 | NN doubles precision for minority class |
+| **Precision (Below / Class 0)** | 0.18 | 0.40 | NN nearly doubles precision for minority class |
 | **Recall (Below / Class 0)** | 0.15 | 0.04 | NN nearly ignores “Below” cases |
 | **F1-Score (Below / Class 0)** | 0.17 | 0.08 | DT slightly better at catching "Below" cases |
 | **Precision (Meeting / Class 1)** | 0.86 | 0.87 | Both strong on majority class |
