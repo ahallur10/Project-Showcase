@@ -1,70 +1,45 @@
-"""
-Model evaluation utilities (illustrative).
-
-What it shows:
-- Compute accuracy, confusion matrix, and classification report per run/fold
-- Aggregate (record_id, y_pred, y_true) rows
-- Optional hashing of identifiers for privacy
-- Optional CSV/Excel export
-
-NOTE: This script is for demonstration only and won’t run without private datasets.
-"""
-
-from __future__ import annotations
-import hashlib
-from typing import Iterable, Sequence, Tuple, Optional, Union
-import numpy as np
+# This script will take our model's output and compare it against the true labels
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
 import pandas as pd
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
-ArrayLike = Union[Sequence[int], Sequence[float], np.ndarray, pd.Series]
+# Get accuracy measures and print to console
+def get_accuracy(labels):
 
-def _hash_id(x) -> str:
-    return hashlib.sha256(str(x).encode()).hexdigest()[:10]
+    all_children = []
+    all_generated = []
+    all_actual = []
 
-def evaluate_runs(
-    runs: Iterable[Tuple[ArrayLike, ArrayLike, ArrayLike]],
-    *,
-    labels_order: Sequence[int] = (0, 1),
-    hash_ids: bool = True,
-    save_path: Optional[str] = None,
-    verbose: bool = True,
-) -> pd.DataFrame:
-    all_rows = []
-    for idx, (y_pred, y_true, rec_ids) in enumerate(runs, 1):
-        y_pred = pd.Series(y_pred).reset_index(drop=True)
-        y_true = pd.Series(y_true).reset_index(drop=True)
-        rec_ids = pd.Series(rec_ids).reset_index(drop=True)
-        if len(y_pred) != len(y_true) or len(y_true) != len(rec_ids):
-            raise ValueError(f"Run {idx}: mismatched lengths.")
+    for i in labels:
+        # Calculate accuracy
+        accuracy = accuracy_score(i[1], i[0])
+        print(f"Model Accuracy: {accuracy:.2f}")  # Prints as percentage
 
-        acc = accuracy_score(y_true, y_pred)
-        cm = confusion_matrix(y_true, y_pred, labels=labels_order)
-        report = classification_report(y_true, y_pred, labels=labels_order, zero_division=0)
+        # Compute confusion matrix
+        conf_matrix = confusion_matrix(i[1], i[0])
 
-        if verbose:
-            print(f"\n=== Run {idx} ===")
-            print(f"Accuracy: {acc:.4f}")
-            print("Confusion Matrix (rows=true, cols=pred):")
-            print(pd.DataFrame(cm, index=[f"T={l}" for l in labels_order], columns=[f"P={l}" for l in labels_order]))
-            print("Classification Report:\n", report)
+        # Display the matrix
+        print("Confusion Matrix:\n", conf_matrix)
 
-        if hash_ids:
-            rec_ids = rec_ids.map(_hash_id)
+        # Generate a detailed performance report
+        report = classification_report(i[1], i[0], zero_division=0)
+        print("Classification Report:\n", report)
 
-        all_rows.append(pd.DataFrame({"record_id": rec_ids, "y_pred": y_pred.astype(int), "y_true": y_true.astype(int)}))
 
-    results = pd.concat(all_rows, ignore_index=True)
+        cn = i[2].values.tolist()
+        actual = i[1].values.tolist()
+        for j in range(0, len(cn)):
+            all_children.append(cn[j])
+            all_generated.append(str(i[0][j]))
+            all_actual.append(str(actual[j]))
 
-    if save_path:
-        if save_path.lower().endswith(".xlsx"):
-            with pd.ExcelWriter(save_path, engine="openpyxl") as w:
-                results.to_excel(w, index=False, sheet_name="model_output")
-        else:
-            results.to_csv(save_path, index=False)
+    final_output = pd.DataFrame(
+        {'Child Name': all_children,
+         'Generated Label': all_generated,
+         'Actual Label': all_actual
+         })
 
-    return results
+    with pd.ExcelWriter('Model_Output.xlsx', engine='openpyxl') as writer:
+        final_output.to_excel(writer, sheet_name='Model Output')
 
-# Example (non-running) usage:
-# runs = [ (y_pred_fold1, y_true_fold1, ids_fold1), (y_pred_fold2, y_true_fold2, ids_fold2) ]
-# results = evaluate_runs(runs, save_path="model_output.csv")
