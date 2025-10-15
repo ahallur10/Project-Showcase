@@ -1,12 +1,11 @@
 """
-Illustrative model-selection dialog using Tkinter.
+model-selection dialog using Tkinter.
 
 What it shows:
 - A minimal GUI built with Tkinter
 - Dropdown (OptionMenu) to pick between model types
 - Returns the user’s choice when confirmed
 
-NOTE: For demonstration only. Not required to run the pipeline.
 """
 
 import tkinter as tk
@@ -14,18 +13,6 @@ import tkinter as tk
 def choose_model(options=None, default="Decision Tree") -> str:
     """
     Display a simple dialog box with a dropdown menu to select a model.
-
-    Parameters
-    ----------
-    options : list of str, optional
-        Model choices to display (default: ["Decision Tree", "Neural Network"])
-    default : str, optional
-        Default pre-selected option.
-
-    Returns
-    -------
-    str
-        The selected model name.
     """
     if options is None:
         options = ["Decision Tree", "Neural Network"]
@@ -43,6 +30,6 @@ def choose_model(options=None, default="Decision Tree") -> str:
 
     return var.get()
 
-# Example (non-running showcase):
 # choice = choose_model()
 # print("Selected:", choice)
+
