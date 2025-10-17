@@ -20,15 +20,15 @@ Click into individual projects for detailed READMEs with workflows and results.
 ## Professional Projects – Maricopa County
 
 ### [At-Risk Prediction Model (ML)](./Professional%20Experience/At-Risk%20Prediction%20Model/)
-- Division’s **first ML model**, achieving 80–85% accuracy (F1: 0.7).  
+- Division’s **first ML model**, achieving 80–85% accuracy (F1: 0.7) on our best model (NN).  
 - Deployed in **Power BI** for staff decision-making.
 
 ### [Health Monitoring Dashboard](./Professional-Projects/Program-Info-Dashboard/)
 - Saved health co-ordinators **4+ hours** daily and improved efficiency by eliminating **90%** of manual report runs, integrating 45 health metrics into a single dynamic Power BI dashboard.
-- Built with Power BI, M Query, DAX.
+- Built with **Power BI, M Query and DAX**.
 
 ### [Supply & Work Orders Dashboard](./Professional%20Experience/Supply%20Order%20Dashboard)
-- Increased visibility by **50%**, surfacing 10+ metrics.  
+- Increased supply item visibility by **50%**, surfacing 10+ metrics.  
 - Modeled **4 years of historical data** with scheduled refresh.  
 
 ---
@@ -37,7 +37,7 @@ Click into individual projects for detailed READMEs with workflows and results.
 
 **Machine Learning**: Feature engineering, neural networks, model validation  
 **Data Analytics**: Power BI, SQL, DAX, data modeling  
-**Software Engineering**: Full-stack dev, APIs, cloud deployment  
+**Software Engineering**: Python, APIs, cloud deployment  
 
 ---
 
