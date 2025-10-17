@@ -107,8 +107,6 @@ in
     FinalTypes
 ```
 
-This transformation pipeline standardized the raw supply data into a unified, analysis-ready format.
-
 ---
 
 ### 🟦 **Model & Visualize**
