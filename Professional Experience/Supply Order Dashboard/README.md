@@ -12,8 +12,8 @@ The Supply Order Dashboard was developed to streamline and centralize how supply
 
 **Impact:**  
 - Reduced report generation time from hours to minutes.  
-- Improved accuracy across 60+ sites.  
-- Enhanced purchasing decisions with real-time insights into supply usage and spending trends.  
+- Improved data visibility on supply order items across 30+ sites.
+- Organized item purchasing decisions with data-driven insights into item usage and ordering trends.  
 
 > **Figure 2:** Supply Order Dashboard Detailed Report (sensitive information blurred)
 <img width="1603" height="831" alt="image" src="https://github.com/user-attachments/assets/934f4435-561b-4096-8e6b-64c832c8d88f" />
@@ -39,8 +39,7 @@ The data extraction process involved identifying and connecting to the correct S
 - Classroom Supply Orders  
 - Office Supply Orders  
 - Janitorial/PPE Supply Orders  
-- Diapering Supply Orders  
-- Site (location metadata)  
+- Diapering Supply Orders    
 
 **Extraction Method:**  
 - Connected to the SQL Server via Power BI’s **SQL Database Connector**  
@@ -64,16 +63,17 @@ After loading the tables into Power BI, each dataset underwent a structured tran
   Since the backend tables lacked category fields and contained inconsistent item names (e.g., `Black_203` and `Black_320` referring to similar items), a custom **mapping sheet** was created for each supply order type.  
   - These mapping sheets linked raw item names to standardized **categories** and **display names**, aligning backend data with the frontend order forms.  
   - The mappings were maintained in SharePoint and connected to Power BI for dynamic updates.  
-  - **Limitation:** Any new or renamed items required manual updates to the mapping sheet and corresponding query adjustments (see *Suggested Improvements* section for future automation ideas).
+  - **Limitation:** Any new or renamed items required manual updates to the mapping sheet and corresponding query adjustments (see *Future Iterations* section for future automation ideas).
 
 - **Data Standardization and Cleaning**
 
   Each table’s transformation included:
   - Unpivoting wide item columns into a long format (`Item`, `Quantity`)  
-  - Merging with custom mapping tables to enrich data with categories and item names  
-  - Joining with the `Site` table to include location and program context  
+  - Merging with custom mapping tables to enrich data with categories and item names
+  - Certain fields in the order form allowed free-text quantity inputs. These were standardized by converting to numeric values and filtering out invalid entries (e.g., negative quantities like -2)
+  - Converted Boolean text fields to binary flags to record total counts for items that had a T/F values
   - Replacing null or blank values with defaults and filtering out deleted records  
-  - Duplicating key identifiers (`ClusterID`) and renaming columns for uniformity  
+  - Duplicating key identifiers (`ClusterID`) to ensure easy text-based slicers and renaming item column names to match frontend  
   - Adding a `Source` field for data lineage tracking  
 
 ---
@@ -152,6 +152,7 @@ Below are two key visuals that illustrate this process:
 <img width="1745" height="1544" alt="image" src="https://github.com/user-attachments/assets/3c99d0bf-6cf4-4173-9181-052e8b728d4e" />
 
 > **Figure 2:** Query Dependencies Diagram _visualizes table connections and lineage within the Power BI model_
+<img width="1852" height="847" alt="image" src="https://github.com/user-attachments/assets/767a6560-0032-4846-9138-bcbdcc43fd3c" />
 
 ---
 
@@ -161,17 +162,15 @@ Below are two key visuals that illustrate this process:
 |-------------------|-------------|
 | `Classroom Supply Orders`, `Office Supply Orders`, `Janitorial/PPE Supply Orders`, `Diapering Supply Orders` | Core fact tables extracted from SQL Server. Each represents a different supply category, later unpivoted, cleaned, and merged into a unified dataset. |
 | `Classroom_Mapping`, `Office_Mapping`, `Janitorial_Mapping`, `Diapering_Mapping` | Lookup (dimension) tables providing standardized item names and categories for each supply type. Used in Power Query transformations for consistent labeling and grouping. |
-| `Site` | Dimension table containing site-level information such as name, program, and region, used for location or program-based filtering. |
 | `Overview Table` | Consolidated output table combining all supply order types after transformation. Serves as the main source for the Power BI dashboard visuals on the Overview report. |
 
 ---
 
 ## 4. Future Iterations  
 
-- Integrate **inventory tracking** to analyze stock levels vs requests.  
-- Enable **automated data refresh** for real-time insights.  
-- Add **drill-through reports** for site-level expenditure tracking.  
-- Explore integration with **procurement systems** for predictive ordering.  
+- Migrate facilities system from our current database to a modern CRM system like **Dynamics 365** to provide real-time data  
+- Enable **automated data refreshes** for real-time insights.  
+- Explore integration with **Co-pilot Agents** for predictive ordering.
+- Handle changes in item names or dropped items from the order sheets by introducing a **Active/Inactive** column on the backend 
 
 ---
-placeholder
