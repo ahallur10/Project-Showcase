@@ -23,7 +23,7 @@ Click into individual projects for detailed READMEs with workflows and results.
 - Reverse-engineered ChildPlus health event logic for program compliance tracking of over 45 health events.  
 - Built with **Power BI, M Query, DAX**.  
 
-### [At-Risk Prediction Model (ML)](./Professional-Projects/At-Risk-Prediction-Model/)
+### [At-Risk Prediction Model (ML)](./Professional%20Experience/At-Risk%20Prediction%20Model/)
 - Division’s **first ML model**, achieving 80–85% accuracy (F1: 0.7).  
 - Deployed in **Power BI** for staff decision-making.  
 
