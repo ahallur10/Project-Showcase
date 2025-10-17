@@ -19,15 +19,15 @@ Click into individual projects for detailed READMEs with workflows and results.
 
 ## Professional Projects – Maricopa County
 
-### [Health Monitoring Dashboard](./Professional-Projects/Program-Info-Dashboard/)
-- Reverse-engineered ChildPlus health event logic for program compliance tracking of over 45 health events.  
-- Built with **Power BI, M Query, DAX**.  
-
 ### [At-Risk Prediction Model (ML)](./Professional%20Experience/At-Risk%20Prediction%20Model/)
 - Division’s **first ML model**, achieving 80–85% accuracy (F1: 0.7).  
-- Deployed in **Power BI** for staff decision-making.  
+- Deployed in **Power BI** for staff decision-making.
 
-### [Supply & Work Orders Dashboard](./Professional-Projects/Facilities-Dashboard/)
+### [Health Monitoring Dashboard](./Professional-Projects/Program-Info-Dashboard/)
+- Reduced monitoring time by 80%, previously taking half the day to run reports tracking 45 health events to having all the information displayed in one place with drill down features for quick analysis on past due health requirements.  
+- Built with **Power BI, M Query, DAX**.
+
+### [Supply & Work Orders Dashboard](./Professional%20Experience/Supply%20Order%20Dashboard)
 - Increased visibility by **50%**, surfacing 10+ metrics.  
 - Modeled **4 years of historical data** with scheduled refresh.  
 
