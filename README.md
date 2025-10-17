@@ -24,8 +24,8 @@ Click into individual projects for detailed READMEs with workflows and results.
 - Deployed in **Power BI** for staff decision-making.
 
 ### [Health Monitoring Dashboard](./Professional-Projects/Program-Info-Dashboard/)
-- Reduced monitoring time by 80%, previously taking half the day to run reports tracking 45 health events to having all the information displayed in one place with drill down features for quick analysis on past due health requirements.  
-- Built with **Power BI, M Query, DAX**.
+- Saved **4+ hours** daily and improved efficiency by eliminating **90%** of manual report runs, integrating 45 health metrics into a single dynamic Power BI dashboard.
+- Built with Power BI, M Query, DAX.
 
 ### [Supply & Work Orders Dashboard](./Professional%20Experience/Supply%20Order%20Dashboard)
 - Increased visibility by **50%**, surfacing 10+ metrics.  
