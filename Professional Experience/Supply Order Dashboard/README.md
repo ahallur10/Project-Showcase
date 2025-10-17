@@ -149,7 +149,7 @@ Below are two key visuals that illustrate this process:
 > **Transformation Steps Diagram:** _outlines how raw data flows through each ETL stage_ 
 <img width="1745" height="1544" alt="image" src="https://github.com/user-attachments/assets/3c99d0bf-6cf4-4173-9181-052e8b728d4e" />
 
-> **Figure 2:** Query Dependencies Diagram _visualizes table connections and lineage within the Power BI model_
+> **Query Dependencies Diagram:**  _visualizes table connections and lineage within the Power BI model_
 <img width="1852" height="847" alt="image" src="https://github.com/user-attachments/assets/767a6560-0032-4846-9138-bcbdcc43fd3c" />
 
 ---
