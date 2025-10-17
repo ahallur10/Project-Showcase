@@ -167,10 +167,14 @@ in
 ```
 ---
 
-## 📈 Data Flow (ELT Overview)
+### 📈 **Diagrams**
 
+Below are 3 key visuals that illustrate this process:  
 
+> **Transformation Steps Diagram:** _outlines how raw data flows through each ETL stage_
 <img width="1714" height="1545" alt="image" src="https://github.com/user-attachments/assets/ea3b2a33-9a8c-4df0-85ba-be7fcaae4035" />
+
+> **Query Dependencies Diagram:** _outlines how raw data flows through each ETL stage_
 
 
 
