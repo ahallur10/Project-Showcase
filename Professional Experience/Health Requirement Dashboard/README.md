@@ -12,8 +12,18 @@ The Health Requirements Dashboard centralizes monitoring of medical and developm
 
 **Impact:**  
 - **Hours → minutes**: monitoring reduced from multi-hour report runs to quick checks.  
-- ***80–90%* less manual work**: no repeated report runs or manual highlighting.
 - **Audit-friendly**: Built to match official report totals for consistency and reliability.
+- ***80–90%* less manual work**: no repeated report runs or manual highlighting.
+
+> 💡 **Impact Snapshot**
+> 
+> | **Before** | **After** |
+> |-------------|------------|
+> | Manually run reports, repeated filter runs, and manual highlighting (2–3 hrs/day) | Instant monitoring and drilldowns in Power BI (10–15 mins/day) |
+> 
+> **Conservative Estimated Time Saved:** 1.5–2.5 hours per day → **30–50 hours per month**
+
+---
 
 > **Figure 2:** Health Requirements Dashboard — Detailed View (sensitive information blurred)
 <img width="1702" height="791" alt="image" src="https://github.com/user-attachments/assets/dc57c774-f486-4f1d-aec7-ce616049558f" />
@@ -56,7 +66,7 @@ After loading the necessary tables, each dataset was standardized in **Power Que
 
 ---
 
-### Key Transformations (Challenges → Solutions)
+### Key Transformations
 
 | **Challenge** | **Solution** |
 |---|---|
