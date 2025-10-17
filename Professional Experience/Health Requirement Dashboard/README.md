@@ -8,20 +8,20 @@
 <img width="1593" height="766" alt="image" src="https://github.com/user-attachments/assets/2434ab0f-925c-42c4-baaf-f570ac244699" />
 
 ---
-The Health Requirements Dashboard centralizes monitoring of medical and developmental health requirements for Head Start and Early Head Start students. Previously, the health coordinator's relied on multiple ChildPlus reports, re-running filters repeatedly and manually highlighting results which often resulted in working after hours. This dashboard replicates the database validation logic in Power BI and brings all requirements, programs, students and statuses into one place, enabling instant drilldowns by site, program, status, and requirement. 
+The Health Requirements Dashboard centralizes monitoring of medical and developmental health requirements for Head Start and Early Head Start students. Previously, the health coordinators relied on multiple ChildPlus reports, re-running filters repeatedly and manually highlighting results which often resulted in working after hours. This dashboard replicates the database validation logic in Power BI and brings all requirements, programs, students and statuses into one place, enabling instant drilldowns by site, program, status, and requirement. 
 
 **Impact:**  
-- **Hours → minutes**: monitoring sessions reduced from multi-hour report runs to quick checks.  
-- ***80–90%* less manual work**: eliminated repeated report runs or manual tallies/highlighting.
-- **Audit-friendly**: Built to match database's generated report numbers and totals, ensuring consistency, accuracy and reliability.
+- **Hours → minutes**: monitoring reduced from multi-hour report runs to quick checks.  
+- ***80–90%* less manual work**: no repeated report runs or manual highlighting.
+- **Audit-friendly**: Built to match official report totals for consistency and reliability.
 
-> **Figure 2:** Supply Order Dashboard Detailed Report (sensitive information blurred)
+> **Figure 2:** Health Requirements Dashboard — Detailed View (sensitive information blurred)
 <img width="1702" height="791" alt="image" src="https://github.com/user-attachments/assets/dc57c774-f486-4f1d-aec7-ce616049558f" />
 
 ---
 
 ## 2. Methodology
-This project follows an **ELT workflow**: data extracted from a SQL Server and an Excel file, loaded into Power BI, transformed with Power Query, modeled with clean relationships, and displayed via DAX-driven visuals.
+This project follows an **ELT workflow**: **Extract** data from SQL Server and a SharePoint-hosted Excel lookup, **Load** into Power BI, then **Transform** with Power Query and DAX before modeling and visualization.
 
 ### 🟨🟩 **Extract & Load**
 
@@ -42,7 +42,7 @@ Once the relevant entities were identified, the focus shifted to aligning key fi
 
 | **Challenge** | **Solution** |
 |----------------|--------------|
-| **Complex database structure** — The source SQL database contained numerous similarly named tables and views with overlapping columns, making it difficult to identify the correct datasets for students, program participation, health requirements, and health events. | Used a **column-based search** and **cross-referenced ChildPlus-style reports** to pinpoint the correct tables. Verified table relationships by checking sample student records for accuracy. |
+| **Complex database structure** — The source SQL database contained numerous similarly named tables and views with overlapping columns, making it difficult to identify the correct datasets for students, program participation, health requirements, and health events. | Used a **column-based search** and **cross-referenced live reports** to pinpoint the correct tables. Verified table relationships by checking sample student records for accuracy. |
 | **Unverified data relationships** — Table joins and record counts didn’t initially align with known totals from official reports. | Performed **cross-verification** between extracted data and official program reports/student profiles to ensure one-to-one consistency and eliminate mismatched joins. |
 | **Outdated and inactive program terms** — Historical `ProgramTermKey` and `RequirementSetKey` values were present in the database, cluttering visuals with irrelevant records. | Applied targeted filters and adjusted term alignment logic so only the **current program term** is displayed. Excluded inactive terms to improve both accuracy and performance. |
 | **Inconsistent event naming conventions** — Backend health requirement IDs did not align with the event names displayed in ChildPlus, causing confusion for coordinators. | Created a **custom “Event Mapping Table”** in Excel and hosted it on **SharePoint** to link `RequirementID` values with user-friendly event names and types. Connected it dynamically to Power BI for continuous updates. |
@@ -52,27 +52,27 @@ Once the relevant entities were identified, the focus shifted to aligning key fi
 ### 🟧 **Transform**
 
 **Summary:**  
-Once the necessary tables were loaded into Power BI, each dataset underwent a structured transformation process in **Power Query** to ensure data consistency and accurately replicate the logic used by health coordinators in the ChildPlus system. Transformations focused on aligning program terms, normalizing field types, cleaning inconsistent identifiers, and enriching health requirement data with calculated fields for downstream DAX measures.
+After loading the necessary tables, each dataset was standardized in **Power Query** and aligned to the **current program term**. A key challenge was that requirement **statuses are not stored in backend tables** as they were computed by the original system’s frontend. I independently reverse-engineered this logic without access to vendor documentation or support, validating my results against live reports to ensure perfect alignment.
 
 ---
 
-#### Key Transformations
+### Key Transformations (Challenges → Solutions)
 
 | **Challenge** | **Solution** |
-|----------------|--------------|
-| **Inconsistent identifiers across tables**: Student and requirement tables used different formats for IDs, which caused join mismatches and missing data. | Standardized all key fields (e.g., `StudentID`, `RequirementID`, `ProgramTermKey`) by converting them to a consistent format. Created combined keys like `StudentTermKey` and `StudentKey` to uniquely match students to their term and health events. |
-| **Missing “Status” logic**: The database showed requirement statuses (like *Complete*, *Incomplete*, *Past Due*) on the student profile on the frontent, but these were **not stored in backend tables**. | Reverse-engineered the database's logic, analyzing how dates and requirement periods changed in the reports. Rebuilt this logic in Power BI using calculated **DAX columns** (_see code snippet below_) to accurately mirror ChildPlus’ frontend results. |
-| **Incomplete due date calculations**: The backend data didn’t always specify when requirements were due or overdue, making tracking difficult. | Added calculated fields like **`Requirement Period`** in Power Query by combining `AgeRequirement` and `DaysToComplete`. These fields fed into DAX measures such as `Days Until Due`, `Days Elapsed`, and `Past Due Events`. |
-| **Large, cluttered tables**: The raw tables contained many unused columns, which slowed down refresh performance. | Selected only relevant columns for analysis (student details, requirement metadata, event dates, and completion logic). This reduced model size and improved refresh speed. |
-| **Relationship verification**: Some joins initially produced missing or duplicated results due to key mismatches. | Used Power BI’s **Query Dependencies View** to visually confirm that each dataset connected correctly, ensuring every student and requirement was represented only once. |
+|---|---|
+| **Inconsistent identifiers across tables** caused join mismatches. | Standardized key fields (e.g., `StudentID`, `RequirementID`, `ProgramTermKey`) and created composite keys (`StudentTermKey`, `StudentKey`) for unique, reliable joins. |
+| **Missing “Status” logic** — the system displays statuses (Complete, Incomplete, Past Due) on the frontend, but they aren’t persisted in the backend. | Reverse-engineered the rules via report/profile comparisons and rebuilt them as DAX calculations (see `Main Status` below) to exactly match official outputs. |
+| **Incomplete due date logic** — due/overdue semantics weren’t explicit in raw data. | Derived **Requirement Period** in Power Query from `AgeRequirement` and `DaysToComplete`; fed that into DAX (`Days Until Due`, `Days Elapsed`, `Past Due Events`). |
+| **Large, cluttered tables** slowed refreshes. | Selected only analysis-relevant columns (student, requirement metadata, event dates, completion logic) to trim model size and speed refresh. |
+
 
 ---
 
-#### Example Code Snippets
+## Example Code Snippets
 
 **Main Status Logic**
 
-The following DAX expression was developed to replicate the **status column** shown in the original system’s student profile. It determines whether a health requirement is **complete**, **late**, or **past due** based on event dates and requirement timing rules.
+As mentioned previously, status values weren't stored in the backend, which involved reverse-engineering the logic that the database used. The following DAX expression was developed to replicate the **status column** shown in the original system’s student profile. It determines whether a health requirement is **complete**, **late**, or **past due** based on event dates and requirement timing rules.
 
 ```DAX
 Main Status =
@@ -82,16 +82,16 @@ VAR HasEvent =
 
 VAR DaysElapsed      = [Days Elapsed (custom)]
 VAR DaysUntilDue     = [Days Until Due (custom)]
-VAR DaysToCompleteNum = IFERROR ( VALUE ( [DaysToComplete] ), BLANK() )
+VAR DaysToComplete (custom) = IFERROR ( VALUE ( [DaysToComplete] ), BLANK() )
 
 RETURN
 SWITCH (
     TRUE(),
     # Completed but after allowed days
-    HasEvent && NOT ISBLANK ( DaysToCompleteNum ) && DaysElapsed > DaysToCompleteNum, "Comp. Late",
+    HasEvent && NOT ISBLANK ( DaysToComplete (custom) ) && DaysElapsed > DaysToComplete (custom), "Comp. Late",
 
     # Completed within allowed timeframe
-    HasEvent && ( ISBLANK ( DaysToCompleteNum ) || DaysElapsed <= DaysToCompleteNum ), "Complete",
+    HasEvent && ( ISBLANK ( DaysToComplete (custom) ) || DaysElapsed <= DaysToComplete (custom) ), "Complete",
 
     # No event and past the due date
     NOT HasEvent && COALESCE ( DaysUntilDue, 0 ) = 0, "Incomplete and Past Due",
@@ -137,7 +137,7 @@ let
     RawTable = Source{[Schema="dbo", Item="Health_Reqs_Cache"]}[Data],
 
     # Select necessary columns
-    Selected = Table.SelectColumns(RawTable, {"StudentID", "RequirementID", "ProgramTerm_ID", "DaysToComplete"}),
+    Selected = Table.SelectColumns(RawTable, {"StudentID", "RequirementID", "ProgramTermKey", "DaysToComplete"}),
 
     # Merge with Requirement metadata
     Merged = Table.NestedJoin(Selected, {"RequirementID"}, Health_Requirement, {"RequirementID"}, "RequirementMeta", JoinKind.LeftOuter),
@@ -156,5 +156,25 @@ in
     Cleaned
 ```
 ---
+
+## 📈 Data Flow (ELT Overview)
+
+```mermaid
+flowchart LR
+    subgraph Source_Systems
+        A["SQL Server<br/>Student_Info, Program_Participation,<br/>Health_Req_Set, Health_Requirement,<br/>Health_Requirement_Cache, Health_Event_Log"]
+        B["SharePoint<br/>Event_Mapping_Table.xlsx"]
+    end
+
+    C["Power BI<br/>Power Query (M)"]
+    D["Cleaned Tables<br/>Standardized Keys + Requirement Period"]
+    E[("Power BI Data Model<br/>Relationships + DAX")]
+    F["Reports & Dashboards<br/>Overview / Detailed / Site Views"]
+
+    A -- "Extract" --> C
+    B -- "Extract" --> C
+    C -- "Load + Transform" --> D
+    D -- "Model" --> E
+    E -- "Visualize" --> F
 
 
