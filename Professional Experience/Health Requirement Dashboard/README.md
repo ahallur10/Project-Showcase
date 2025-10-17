@@ -167,7 +167,7 @@ in
 ```
 ---
 
-### 📈 **Diagrams**
+## 3. 📈 **Diagrams**
 
 Below are 3 key visuals that illustrate this process:  
 
