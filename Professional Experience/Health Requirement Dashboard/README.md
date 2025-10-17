@@ -169,22 +169,8 @@ in
 
 ## 📈 Data Flow (ELT Overview)
 
-```mermaid
-flowchart LR
-    subgraph Source_Systems
-        A["SQL Server<br/>Student_Info, Program_Participation,<br/>Health_Req_Set, Health_Requirement,<br/>Health_Requirement_Cache, Health_Event_Log"]
-        B["SharePoint<br/>Event_Mapping_Table.xlsx"]
-    end
 
-    C["Power BI<br/>Power Query (M)"]
-    D["Cleaned Tables<br/>Standardized Keys + Requirement Period"]
-    E[("Power BI Data Model<br/>Relationships + DAX")]
-    F["Reports & Dashboards<br/>Overview / Detailed / Site Views"]
+<img width="1714" height="1545" alt="image" src="https://github.com/user-attachments/assets/ea3b2a33-9a8c-4df0-85ba-be7fcaae4035" />
 
-    A -- "Extract" --> C
-    B -- "Extract" --> C
-    C -- "Load + Transform" --> D
-    D -- "Model" --> E
-    E -- "Visualize" --> F
 
 
