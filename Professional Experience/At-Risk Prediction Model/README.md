@@ -85,6 +85,8 @@ Future iterations of this project will focus on strengthening both the data foun
 - **Re-labeling risk outcomes** by using more comprehensive definitions of “at-risk” and “on-track” aligned with program criteria.
 
 - **Address underlying issues** such as imbalanced labels, accuracy of labeling and feature quality
+  
+- **Add Feature Scaling** for continuous features prior to model training and ensure consistent feature weighting across folds.
 
 - **Balance the dataset** by continuing to use SMOTE or class weights to improve recall for the NN
 
