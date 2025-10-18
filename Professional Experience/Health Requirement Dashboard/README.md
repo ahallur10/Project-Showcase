@@ -11,9 +11,9 @@
 The Health Requirements Dashboard centralizes monitoring of medical and developmental health requirements for Head Start and Early Head Start students. Previously, the health coordinators relied on multiple live reports, re-running filters repeatedly and manually highlighting results which often resulted in working after hours. This dashboard replicates the database validation logic in Power BI and brings all requirements, programs, students and statuses into one place, enabling instant drilldowns by site, program, status, and requirement. 
 
 **Impact:**  
-- **Hours → minutes**: monitoring reduced from multi-hour report runs to quick checks.  
+- **Hours → minutes**: Monitoring reduced from multi-hour report runs to quick checks.  
 - **Audit-friendly**: Built to match official report totals for consistency and reliability.
-- ***80–90%* less manual work**: no repeated report runs or manual highlighting.
+- ***80–90%* less manual work**: No repeated report runs or manual highlighting.
 
 > 💡 **Impact Snapshot**
 > 
@@ -72,7 +72,7 @@ After loading the necessary tables, each dataset was standardized in **Power Que
 |---|---|
 | **Inconsistent identifiers across tables** caused join mismatches. | Standardized key fields (e.g., `StudentID`, `RequirementID`, `ProgramTermKey`) and created composite keys (`StudentTermKey`, `StudentKey`) for unique, reliable joins. |
 | **Missing “Status” logic** — the system displays statuses (Complete, Incomplete, Past Due) on the frontend, but they aren’t persisted in the backend. | Reverse-engineered the rules via report/profile comparisons and rebuilt them as DAX calculations (see `Main Status` below) to exactly match official outputs. |
-| **Incomplete due date logic** — due/overdue semantics weren’t explicit in raw data. | Derived **Requirement Period** in Power Query from `AgeRequirement` and `DaysToComplete`; fed that into DAX (`Days Until Due`, `Days Elapsed`, `Past Due Events`). |
+| **Incomplete due date logic** — due/overdue semantics weren’t explicit in raw data. | Derived **Requirement Period** in Power Query using `AgeRequirement` and `DaysToComplete` and fed that into DAX (`Days Until Due`, `Days Elapsed`, `Past Due Events`). |
 | **Large, cluttered tables** slowed refreshes. | Selected only analysis-relevant columns (student, requirement metadata, event dates, completion logic) to trim model size and speed refresh. |
 
 
@@ -176,7 +176,7 @@ Below are 3 key visuals that illustrate this process:
 
 ---
 
-> **Query Dependencies Diagram:** _outlines how raw data flows through each ETL stage_
+> **Query Dependencies Diagram:** _visualizes table connections and lineage within the PowerBI model_
 <img width="1267" height="1569" alt="image" src="https://github.com/user-attachments/assets/7a735767-b7d7-4cec-bca5-2adc32738f92" />
 
 ---
