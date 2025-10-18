@@ -16,7 +16,7 @@ The finalized model will be deployed at a selected site to evaluate how teachers
 This phase assesses the model’s usability, accuracy, and impact on early intervention decision-making.
 
 ## Problem Addressed
-Early intervention programs often rely on static reporting or small-scale A/B testing to identify children who may need additional support. These methods can miss subtle patterns or combined risk factors across attendance, health, and family variables. This project explores how machine learning can improve early identification by capturing complex, nonlinear relationships among multiple indicators, enabling more proactive and data-informed support for children and families.
+Early intervention programs often rely on static reporting or small-scale A/B testing to identify children who may need additional support. These methods can miss subtle patterns or combined risk factors across attendance, health, and family variables. This project explores how machine learning can improve early identification by capturing complex, nonlinear relationships among multiple indicators, enabling more proactive and data-informed support for children and families. The key question was whether predictive modeling could reliably flag at-risk children early enough to inform staff intervention.
 
 ## Methodology
 
