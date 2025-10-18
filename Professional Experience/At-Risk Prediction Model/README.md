@@ -34,9 +34,9 @@ We evaluated a **Decision Tree** (implemented in scikit-learn, with the option t
 
 The **Decision Tree** achieved an average **accuracy of 78%** and a **weighted F1-score of 0.78**, performing reliably for the majority (*Meeting/Exceeding*) class but struggling to correctly identify the minority *Below* category (**Recall = 0.15**, **Precision = 0.18**).
 
-The **Neural Network** outperformed it with **86% accuracy** and a **weighted F1-score of 0.81**, demonstrating stronger overall learning but showing clear bias toward the majority class. This imbalance is evident in the low recall (**0.04**) and precision (**0.40**) for at-risk students, indicating the model’s tendency to misclassify most *Below* cases as *Meeting*.
+The **Neural Network** outperformed it with **86% accuracy** and a **weighted F1-score of 0.81**, demonstrating stronger overall learning but showing clear bias toward the majority class. This imbalance is evident in the low recall and precision (**Recall = 0.04, Precision = 0.40**) for at-risk students, indicating the model’s tendency to misclassify most *Below* cases as *Meeting*.
 
-Despite these limitations, both models successfully learned meaningful patterns within the data, confirming that the dataset holds predictive value when properly cleaned and structured, which forms a key improvement vector for **Phase 2**. The gap between the **macro F1 (0.52)** and **weighted F1 (0.80)** further highlights class imbalance, showing that accuracy alone overstates model performance.
+Despite these limitations, both models successfully learned meaningful patterns within the data, confirming that the dataset contains predictive signals when properly cleaned and structured, which forms a key improvement vector for **Phase 2**.The disparity between **macro F1 (0.52)** and **weighted F1 (0.80)** further evidences imbalance, showing that accuracy alone overstates model performance.
 
 In summary, both models favor the majority class, yielding optimistic accuracy scores. The **Neural Network** generalizes better overall but sacrifices minority recall, while the **Decision Tree** provides clearer interpretability of which features drive predictions at the cost of performance. Feature importance analysis identified the **top three predictors** for at-risk classification as **Attendance**, **Disability indicators**, and **Adult income levels**.
 
@@ -62,13 +62,13 @@ The most significant challenge was the data cleaning and preparation process, wh
 
 Overall challenges included:
 
-. **Lack of direct database access** which limited the ability to automate data retrieval.
+- **Lack of direct database access** which limited the ability to automate data retrieval.
 
-. **Inconsistent report formats between systems** which required customized cleaning scripts per report type.
+- **Inconsistent report formats between systems** which required customized cleaning scripts per report type.
 
-. **Missing or incomplete student records** that forced the removal of several rows to maintain data integrity.
+- **Missing or incomplete student records** that forced the removal of several rows to maintain data integrity.
 
-. **Class imbalance** for the majority of students labeled “not at risk,” which introduced bias in model training.
+- **Class imbalance** for the majority of students labeled “not at risk,” which introduced bias in model training.
 
 These constraints slowed development but offered valuable lessons in data engineering, feature design, and practical machine learning within our data environments.
 
@@ -76,17 +76,17 @@ These constraints slowed development but offered valuable lessons in data engine
 
 Future iterations of this project will focus on strengthening both the data foundation and the predictive accuracy of the model. Key next steps include:
 
-. **Direct database querying** to replace manual report extraction and streamline data preparation.
+- **Direct database querying** to replace manual report extraction and streamline data preparation.
 
-. **Improved handling of missing data** by dropping features with insufficient records rather than entire student entries.
+- **Improved handling of missing data** by dropping features with insufficient records rather than entire student entries.
 
-. **Expanding predictive features** such as enrollment status, kindergarten continuation tracking, and other relevant trends.
+- **Expanding predictive features** such as enrollment status, kindergarten continuation tracking, and other relevant trends.
 
-. **Re-labeling risk outcomes** by using more comprehensive definitions of “at-risk” and “on-track” aligned with program criteria.
+- **Re-labeling risk outcomes** by using more comprehensive definitions of “at-risk” and “on-track” aligned with program criteria.
 
-. **Address underlying issues** such as imbalanced labels, accuracy of labeling and feature quality
+- **Address underlying issues** such as imbalanced labels, accuracy of labeling and feature quality
 
-. **Balance the dataset** by continuing to use SMOTE or class weights to improve recall for the NN
+- **Balance the dataset** by continuing to use SMOTE or class weights to improve recall for the NN
 
 These enhancements aim to improve both the usability and impact of the model, setting the stage for broader implementation across additional program years or counties.
 
