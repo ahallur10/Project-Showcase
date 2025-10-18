@@ -23,7 +23,7 @@ Click into individual projects for detailed READMEs with workflows and results.
 - Division’s **first ML model**, achieving 80–85% accuracy (F1: 0.7) on our best model (NN).  
 - Deployed in **Power BI** for staff decision-making.
 
-### [Health Monitoring Dashboard](./Professional-Projects/Program-Info-Dashboard/)
+### [Health Monitoring Dashboard](./Professional%20Experience/Health%20Requirement%20Dashboard/)
 - Saved health co-ordinators **4+ hours** daily and improved efficiency by eliminating **90%** of manual report runs, integrating 45 health metrics into a single dynamic Power BI dashboard.
 - Built with **Power BI, M Query and DAX**.
 
