@@ -8,7 +8,7 @@
 <img width="1593" height="766" alt="image" src="https://github.com/user-attachments/assets/2434ab0f-925c-42c4-baaf-f570ac244699" />
 
 ---
-The Health Requirements Dashboard centralizes monitoring of medical and developmental health requirements for Head Start and Early Head Start students. Previously, the health coordinators relied on multiple ChildPlus reports, re-running filters repeatedly and manually highlighting results which often resulted in working after hours. This dashboard replicates the database validation logic in Power BI and brings all requirements, programs, students and statuses into one place, enabling instant drilldowns by site, program, status, and requirement. 
+The Health Requirements Dashboard centralizes monitoring of medical and developmental health requirements for Head Start and Early Head Start students. Previously, the health coordinators relied on multiple live reports, re-running filters repeatedly and manually highlighting results which often resulted in working after hours. This dashboard replicates the database validation logic in Power BI and brings all requirements, programs, students and statuses into one place, enabling instant drilldowns by site, program, status, and requirement. 
 
 **Impact:**  
 - **Hours → minutes**: monitoring reduced from multi-hour report runs to quick checks.  
@@ -182,12 +182,19 @@ Below are 3 key visuals that illustrate this process:
 ---
 
 > **Key Relationships:** _Showcases key relationships modeled in the relationship view_
+<img width="1142" height="718" alt="image" src="https://github.com/user-attachments/assets/131c662e-e603-4706-9afb-c39a0c277e52" />
 
 ---
 
-## 3. **Future Iterations**
+## 4. 🚀 **Future Iterations**
 
+- **Automated Alerts:** Integrate Power Automate notifications (email or Teams) to site supervisors for *“Incomplete and Past Due”* and *“Past Due but within DTC”* events by site or program.  
+- **Row-Level Security (RLS):** Implement site-based access to ensure coordinators and supervisors only view relevant records.  
+- **Program Term Toggle:** Enable switching between current and previous program terms through parameters instead of manual query edits.  
+- **Missing Health Notes Tracker:** Add a dedicated table or filter to flag missing or incomplete health notes within event descriptions.  
+- **SQL Optimization:** Streamline SQL queries to handle basic pre-transformations, improving Power BI refresh performance and reducing compute usage.
 
+---
 
 
 
