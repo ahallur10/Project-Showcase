@@ -9,7 +9,7 @@ Click into individual projects for detailed READMEs with workflows and results.
 
 ### [NuSkill – Capstone Project](./Undergraduate-Projects/ISTA498-Project)
 - Interactive programming tutorial platform with a blockchain-based accountability model.  
-- Full-stack design using **Flask (Python)**, **React.js**, and **Snowflake SQL**.  
+- Full-stack design using **Flask (Python)**, **React.js**, and **Snowflake (SQL)**.  
 
 ### [Music Genre Classification – ML Research](./Undergraduate-Projects/ML-Research-Paper/)
 - Applied **RFE and Boruta** feature selection on GTZAN dataset.  
@@ -18,18 +18,20 @@ Click into individual projects for detailed READMEs with workflows and results.
 ---
 
 ## Professional Projects – Maricopa County
+> _All data is de-identified/synthetic and consistent with privacy guidelines._
 
-### [At-Risk Prediction Model (ML)](./Professional%20Experience/At-Risk%20Prediction%20Model/)
-- Division’s **first ML model**, achieving 80–85% accuracy (F1: 0.7) on our best model (NN).  
+### [At-Risk Prediction Model - ML Research)](./Professional%20Experience/At-Risk%20Prediction%20Model/)
+- Division’s **first ML model** to flag at-risk children early using program data.
+- **Best model:** Neural Network — Accuracy 86%, Weighted F1 0.81.  
 - Deployed in **Power BI** for staff decision-making.
 
 ### [Health Monitoring Dashboard](./Professional%20Experience/Health%20Requirement%20Dashboard/)
-- Saved health co-ordinators **4+ hours** daily and improved efficiency by eliminating **90%** of manual report runs, integrating 45 health metrics into a single dynamic Power BI dashboard.
-- Built with **Power BI, M Query and DAX**.
+- Saved health coordinators **3+ hours** daily and improved efficiency by eliminating **80-90%** of manual report runs, integrating 45 health metrics into a single dynamic Power BI dashboard.
+- Built with **Power BI, Power Query(M) and DAX**.
 
-### [Supply & Work Orders Dashboard](./Professional%20Experience/Supply%20Order%20Dashboard)
-- Increased supply item visibility by **50%**, surfacing 10+ metrics.  
-- Modeled **4 years of historical data** with scheduled refresh.  
+### [Supply Orders Dashboard](./Professional%20Experience/Supply%20Order%20Dashboard)
+- Increased supply item visibility by **50%**, slashing manual inventory oversight hours by **30%**.  
+- Modeled **4 years of historical data** with scheduled refresh, uncovering never before tracked KPI's such as item usage trends.  
 
 ---
 
