@@ -20,7 +20,7 @@ Click into individual projects for detailed READMEs with workflows and results.
 ## Professional Projects – Maricopa County
 > _All data is de-identified/synthetic and consistent with privacy guidelines._
 
-### [At-Risk Prediction Model - ML Research)](./Professional%20Experience/At-Risk%20Prediction%20Model/)
+### [At-Risk Prediction Model - ML Research](./Professional%20Experience/At-Risk%20Prediction%20Model/)
 - Division’s **first ML model** to flag at-risk children early using program data.
 - **Best model:** Neural Network — Accuracy 86%, Weighted F1 0.81.  
 - Deployed in **Power BI** for staff decision-making.
