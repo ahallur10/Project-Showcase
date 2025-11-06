@@ -1,74 +1,54 @@
-# At-Risk Student Prediction Model
+# Professional Experience Portfolio
 
-## Overview
-I designed this project to explore how machine learning can be applied to support early intervention for students who may be at risk of not meeting developmental goals. Developed as the capstone project for our data management intern, it was completed in collaboration with our programmer analyst. I led the design of the project specifications, timeline, data sources, and data-cleaning methodology, ensuring the intern was involved in each stage of development. The resulting Phase 1 implementation demonstrates a complete machine learning workflow for predicting whether a student record is “on track” or “at risk” for meeting learning outcomes for children ages 0–5. Model results were visualized in Power BI to translate predictions into actionable insights for educators and program staff. My aim was to implement this project by breaking it into 3 different phases:
+<p>
+This folder showcases key data analytics and machine learning projects I developed during my tenure as a Data Analyst at Maricopa County. These projects demonstrate end-to-end solutions spanning predictive modeling, business intelligence and automated reporting that directly supported operational decision-making
+</p>
 
-**Phase 1 — Exploratory Development:**
-Focused on building the initial machine learning prototype and verifying the feasibility of the approach.
-This phase emphasized data exploration, identifying inconsistencies, and “shaking out” bugs in preprocessing and model training workflows.
+<hr>
 
-**Phase 2 — Refinement and Enhancement:**
-A more polished and optimized version of the workflow.
-Improvements included refined feature engineering, better handling of missing data, and structural corrections based on insights from Phase 1.
+## 🎯 Project Summaries
 
-**Phase 3 — Field Implementation and Evaluation:**
-The finalized model will be deployed at a selected site to evaluate how teachers and staff interact with predictions in real-world settings.
-This phase assesses the model’s usability, accuracy, and impact on early intervention decision-making.
+### 1. [At-Risk Prediction Model](./At-Risk%20Prediction%20Model/)
+**Machine Learning | Python | scikit-learn | PyTorch**
 
-## Problem Addressed
-Early intervention programs often rely on static reporting or small-scale A/B testing to identify children who may need additional support. These methods can miss subtle patterns or combined risk factors across attendance, health, and family variables. This project explores how machine learning can improve early identification by capturing complex, nonlinear relationships among multiple indicators, enabling more proactive and data-informed support for children and families.
+Directed the division's first machine learning model to predict which students (ages 0–5) are at risk of not meeting developmental milestones. This predictive system enables early intervention by analyzing patterns across attendance, health, and other student information.
 
+**Key Achievements:**
+- Built and validated models achieving **86% accuracy** (Neural Network) and **78% accuracy** (Decision Tree)
+- Implemented K-Fold Cross Validation and SMOTE for robust, balanced predictions
+- Created a foundation for future implementation, progressing in planned phases
+- Visualized predictions in Power BI for educators
 
-The project showcases:
-- **Data preprocessing**  
-- **Model training** (Decision Tree or Neural Network)  
-- **Evaluation and visualization** of model performance  
-
-> ⚠️ **Note:**  
-> This project is for **demonstration and portfolio purposes only.**  
-> The scripts are illustrative and will not run without private datasets.
+**Tech Stack:** Python, pandas, scikit-learn, PyTorch, SMOTE, Power BI
 
 ---
 
-## Key Scripts
+### 2. [Health Requirement Dashboard](./Health%20Requirement%20Dashboard/)
+**Power BI | SQL Server | DAX | Power Query**
 
-| File | Description |
-|------|--------------|
-| `data_preprocessing.py` | Cleans raw data, handles missing values, encodes categoricals, prepares feature and label sets. |
-| `model_training.py` | Trains Decision Tree or Random Forest models using scikit-learn. |
-| `nn_trainer.py` | Implements a compact PyTorch neural network with BatchNorm, Dropout, and early stopping. |
-| `model_evaluation.py` | Calculates accuracy, confusion matrix, and classification report across folds. |
-| `model_selector.py` | Optional Tkinter dialog for choosing model interactively (UI showcase). |
-| `main.py` | Orchestrates the complete workflow (data → model → evaluation). |
+Centralized monitoring system for medical and developmental health requirements across 30+ Head Start sites. Replaced hours of manual report-running with instant, drill-down analytics that reduced coordinator workload by **80–90%**.
 
----
+**Key Achievements:**
+- Reverse-engineered complex status logic (Complete, Incomplete, Past Due) without vendor documentation
+- Built ELT pipeline connecting SQL Server and SharePoint for dynamic lookups
+- Reduced daily monitoring from **2–3 hours to 10–15 minutes** (~30–50 hours saved monthly)
+- Designed audit-friendly dashboard matching official report totals
 
-## Workflow Diagram
-<img width="549" height="676" alt="Updated ML Flowchart" src="https://github.com/user-attachments/assets/cf4dfbc5-ed5f-4c3c-81c8-c3b39cdcae6d" />
-
----
-## PowerBI Dashboard
-> ⚠️ **Note:**  
-> The student ID's have been renamed and site information has been blurred out fo **demonstration and portfolio purposes only.**
-<img width="705" height="416" alt="Cleaned ML Project Screenshot" src="https://github.com/user-attachments/assets/45a1fa09-402f-4614-98eb-2a20e878b2c3" />
-
-
----
-## Pipeline Overview
-1. **Data** – Created tabular datasets (e.g. attendance, demographics, program data) by cleaning and transforming generated reports on Excel.  
-2. **Preprocessing** – Cleaned, normalized, and encoded features.  
-3. **K-Fold Cross Validation** – Ensured balanced and fair model evaluation.  
-4. **Model Training** – Trained Decision Trees / Random Forests or Neural Networks with early stopping (PyTorch).  
-5. **Evaluation** – Produced accuracy metrics, confusion matrices and evaluated F1 scores.  
-6. **Reporting** – Illustrated how results could be displayed in dashboards.
+**Tech Stack:** Power BI, SQL Server, DAX, Power Query (M), SharePoint
 
 ---
 
-## Tech Stack
+### 3. [Supply Order Dashboard](./Supply%20Order%20Dashboard/)
+**Power BI | SQL Server | ELT | Data Modeling**
 
-- **Language:** Python  
-- **Core Libraries:** `pandas`, `numpy`, `scikit-learn`, `imblearn`, `matplotlib`  
-- **Deep Learning:** `PyTorch`  
-- **Utilities:** `joblib`, `openpyxl`, `tkinter`
+Automated supply order tracking and analysis system consolidating 4 order types (Classroom, Office, Janitorial, Diapering) across all sites. Replaced manual spreadsheets with a unified dashboard for purchasing decisions.
 
----
+**Key Achievements:**
+- Unified 4 disparate supply order tables into a single analytical model
+- Created custom mapping system linking backend codes to user-friendly item names
+- Standardized 15–19 transformation steps per table for consistent data quality
+- Enabled data-driven insights into item demand, fulfillment trends, and site-level spending
+
+**Tech Stack:** Power BI, SQL Server, DAX, Power Query (M), SharePoint
+
+
