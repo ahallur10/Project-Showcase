@@ -36,7 +36,7 @@ NuSkill was developed as a collaborative capstone project. My role focused on:
 <ul>
 <li><b>Idea conception</b>: I initiated the accountability-through-crypto model, which became the foundation of the project.</li>
 <li><b>Backend payment services</b>: Implemented Flask routes for deposits and balance tracking.</li>
-<li><b>Coinbase integration</b>: Built the webhook + Commerce API flow to generate hosted checkout URLs, enabling deposits and refunds.</li>
+<li><b>Coinbase integration</b>: Built the API flow to generate hosted checkout URLs, enabling deposits and refunds.</li>
 <li><b>Database integration</b>: Connected payment services to Snowflake SQL for tracking balances.</li>
 <li><b>Collaboration</b>: Partnered with teammates who extended the frontend (React.js, Vite/Tailwind) and cloud deployment (Google Cloud Run).</li>
 </ul>
