@@ -52,7 +52,6 @@ class CoinbaseWalletAuth(AuthBase):
 
 
 # Creates a payment request for user and returns the checkout page URL
-# Coinbase's Wallet/Sign-in api is broken as shit, so are their docs. requesting money is now done via Commerce REST API, not the Wallet/Sign-in one
 def requestFundsFromUser(amount):
     payload = {
         'name': 'NuSkill',
